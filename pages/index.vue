@@ -74,12 +74,37 @@
           </v-card>
       </v-col>
     </v-row>
+    <!-- --------------------------------------------------------------------------------------------------------------------- -->
+    <template>
+      <v-sparkline
+        :value="value"
+        color="pink"
+        :smooth="radius || false"
+        :padding="padding"
+        :line-width="width"
+        :stroke-linecap="lineCap"
+        :fill="fill"
+        :type="type"
+        :auto-line-width="autoLineWidth"
+        auto-draw
+      />
+    </template>
   </v-container>
 </template>
 
 <script>
 export default {
   name: 'IndexPage',
+  data: () => ({
+    width: 2,
+    radius: 10,
+    padding: 8,
+    lineCap: 'round',
+    value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
+    fill: false,
+    type: 'trend',
+    autoLineWidth: false,
+  })
 }
 </script>
 

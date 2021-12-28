@@ -1,5 +1,6 @@
 <template>
   <v-container fluid>
+    <NavigateBar />
     <v-row justify="left" align="center">
       <v-col cols="3">
         <v-card class="mb-2 pa-1 twoRoundedVertices" color="#CC7788">

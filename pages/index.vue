@@ -22,6 +22,9 @@
           </v-toolbar>
         </v-card>
       </v-col>
+      <v-col cols="9">
+         <v-text-field label="Search" prepend-inner-icon="mdi-search" filled rounded color="#DF89A8"></v-text-field>
+      </v-col>
     </v-row>
   </v-container>
 </template>

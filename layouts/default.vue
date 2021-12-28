@@ -1,7 +1,6 @@
 <template>
   <v-app dark>
     <v-main>
-      Template Main Content
       <nuxt />
     </v-main>
     <v-footer :absolute="!fixed" app>

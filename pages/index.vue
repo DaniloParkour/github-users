@@ -4,12 +4,11 @@
       <h2 class="ml-4 mt-2">GitHub Users</h2>
     </v-row>
     <v-row justify="center">
-      <v-col cols="8">
+      <v-col cols="12" md="8" lg="6">
         <v-card
           class="mx-auto"
           color="pink"
           dark
-          max-width="800"
         >
           <v-text-field
             v-model="searchByName"
@@ -133,7 +132,7 @@
       </v-col>
     </v-row>
     <v-row justify="center" align="top">
-      <v-col cols="7">
+      <v-col cols="12" md="8" lg="6">
         <v-expansion-panels>
           <v-expansion-panel @click="searchRepositories">
             <v-expansion-panel-header>Repositories {{user.public_repos ? '('+user.public_repos+')' : ''}}</v-expansion-panel-header>
@@ -270,7 +269,6 @@
                                   {{following.login}}
                                 </v-list-item-title>
                               </v-col>
-                              
                             </v-row>
                           </a> 
                         </v-col>
@@ -323,14 +321,17 @@ export default Vue.extend({
       this.searchUser()
     },
     searchRepositories() {
+      if(this.reposList && this.reposList.length > 0) return
       this.$axios.$get('users/' + this.user.login + '/repos')
       .then((resp) => { this.reposList = resp })
     },
     searchFollowing() {
+      if(this.followingList && this.followingList.length > 0) return
       this.$axios.$get('users/' + this.user.login + '/following')
       .then((resp) => { this.followingList = resp })
     },
     searchFollowers() {
+      if(this.followersList && this.followersList.length > 0) return
       this.$axios.$get('users/' + this.user.login + '/followers')
       .then((resp) => { this.followersList = resp })
     }

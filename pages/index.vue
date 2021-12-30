@@ -241,7 +241,51 @@
             <v-expansion-panel-header>Following  {{user.following ? '('+user.following+')' : ''}}</v-expansion-panel-header>
             <v-expansion-panel-content>
               <div  v-for="following in followingList" :key="following">
-                {{following.login}}
+                <v-card
+                  outlined
+                  class="mb-2"
+                >
+                <v-list-item dense three-line>
+                    <v-list-item-content>
+                      <v-row>
+                        <v-col cols="10">
+                          <a :href="following.html_url" target="_blank" style="text-decoration: none; color: white;">
+                            <v-row>
+                              <v-col
+                                cols="2" class="pl-8">
+                                <div class="text-overline">
+                                    <v-avatar
+                                      height="4em"
+                                      width="4em"
+                                      style="border: 2px solid white"
+                                    >
+                                      <img
+                                        :src="following.avatar_url"
+                                      >
+                                    </v-avatar>
+                                  </div>
+                              </v-col>
+                              <v-col cols="10">
+                                <v-list-item-title class="text-h6 pb-2">
+                                  {{following.login}}
+                                </v-list-item-title>
+                              </v-col>
+                              
+                            </v-row>
+                          </a> 
+                        </v-col>
+                        <v-col cols="2">
+                          <v-btn @click="serachLogin(following.login)">
+                            <v-icon left>
+                              mdi-magnify
+                            </v-icon>
+                            Search
+                          </v-btn>
+                        </v-col>
+                      </v-row>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-card>
               </div>
               </v-expansion-panel-content>
           </v-expansion-panel>

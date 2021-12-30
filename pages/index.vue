@@ -189,7 +189,51 @@
             <v-expansion-panel-header>Followers  {{user.followers ? '('+user.followers+')' : ''}}</v-expansion-panel-header>
             <v-expansion-panel-content>
               <div  v-for="follower in followersList" :key="follower">
-                {{follower.login}}
+                <v-card
+                  outlined
+                  class="mb-2"
+                >
+                <v-list-item dense three-line>
+                    <v-list-item-content>
+                      <v-row>
+                        <v-col cols="10">
+                          <a :href="follower.html_url" target="_blank" style="text-decoration: none; color: white;">
+                            <v-row>
+                              <v-col
+                                cols="2" class="pl-8">
+                                <div class="text-overline">
+                                    <v-avatar
+                                      height="4em"
+                                      width="4em"
+                                      style="border: 2px solid white"
+                                    >
+                                      <img
+                                        :src="follower.avatar_url"
+                                      >
+                                    </v-avatar>
+                                  </div>
+                              </v-col>
+                              <v-col cols="10">
+                                <v-list-item-title class="text-h6 pb-2">
+                                  {{follower.login}}
+                                </v-list-item-title>
+                              </v-col>
+                              
+                            </v-row>
+                          </a> 
+                        </v-col>
+                        <v-col cols="2">
+                          <v-btn @click="serachLogin(follower.login)">
+                            <v-icon left>
+                              mdi-magnify
+                            </v-icon>
+                            Search
+                          </v-btn>
+                        </v-col>
+                      </v-row>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-card>
               </div>
               </v-expansion-panel-content>
           </v-expansion-panel>
@@ -215,7 +259,7 @@ export default Vue.extend({
   name: 'IndexPage',
   data: () => ({
     user: {} as UserDTO,
-    searchByName: '',
+    searchByName: '' as String,
     reposList: [] as Array<RepositorieDTO>,
     followersList: [] as Array<UserDTO>,
     followingList: [] as Array<UserDTO>,
@@ -229,6 +273,10 @@ export default Vue.extend({
         this.followersList = [] as Array<UserDTO>
         this.followingList = [] as Array<UserDTO>
       })
+    },
+    serachLogin(login: String) {
+      this.searchByName = login
+      this.searchUser()
     },
     searchRepositories() {
       this.$axios.$get('users/' + this.user.login + '/repos')

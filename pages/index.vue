@@ -37,6 +37,8 @@
                     </v-icon>
                     <span class="caption">{{'created at ' + (user.created_at || '2021')}}</span>
                   </v-col>
+                </v-row>
+                <v-row no-gutters dense>
                   <v-col cols="12">
                     <v-icon dense class="caption">
                       mdi-clock
@@ -48,7 +50,7 @@
             </v-row>
           </v-card-title>
 
-          <v-card-text class="text-h5 font-weight-bold">
+          <v-card-text class="text-h5 font-weight-bold" style="background: rgba(0,0,0,.085); border: 2px solid rgba(0,0,0,.1);">
             {{
               user.bio || '+Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well.'
             }}
@@ -57,21 +59,50 @@
           <v-card-actions>
             <v-list-item class="grow">
               <v-row
-                align="center"
-                justify="end"
+                class="my-2"
+                dense
+                no-gutters
               >
-                <v-icon class="mr-1">
-                  mdi-book
-                </v-icon>
-                <span class="subheading mr-8">{{(user.public_repo || 0) + ' repositories'}}</span>
-                <v-icon class="mr-1">
-                  mdi-account-multiple
-                </v-icon>
-                <span class="subheading mr-8">{{(user.followers || 0) + ' followers'}}</span>
-                <v-icon class="mr-1">
-                  mdi-shoe-print
-                </v-icon>
-                <span class="subheading mr-8">{{(user.following || 0) + ' following'}}</span>
+                <v-col cols="9">
+                  <div>
+                    <v-icon class="mr-1">
+                      mdi-mail
+                    </v-icon>
+                    <span class="subheading">{{user.mail || 'User Email'}}</span>
+                  </div>
+                  <div>
+                    <v-icon class="mr-1">
+                      mdi-twitter
+                    </v-icon>
+                    <span class="subheading">{{user.twitter_username || 'Twitter Username'}}</span>
+                  </div>
+                  <div>
+                    <v-icon class="mr-1">
+                      mdi-post
+                    </v-icon>
+                    <span class="subheading">{{user.blog + 'User Blog'}}</span>
+                  </div>
+                </v-col>
+                <v-col cols="3">
+                  <div>
+                    <v-icon class="mr-1">
+                      mdi-book
+                    </v-icon>
+                    <span class="subheading">{{(user.public_repo || 0) + ' repositories'}}</span>
+                  </div>
+                  <div>
+                    <v-icon class="mr-1">
+                      mdi-account-multiple
+                    </v-icon>
+                    <span class="subheading">{{(user.followers || 0) + ' followers'}}</span>
+                  </div>
+                  <div>
+                    <v-icon class="mr-1">
+                      mdi-shoe-print
+                    </v-icon>
+                    <span class="subheading">{{(user.following || 0) + ' following'}}</span>
+                  </div>
+                </v-col>
               </v-row>
             </v-list-item>
           </v-card-actions>

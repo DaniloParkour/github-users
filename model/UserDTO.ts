@@ -7,7 +7,7 @@ export default class UserDTO {
   email: String = "";
   twitter_username: String = "";
   blog: String = "";
-  public_repo: Number = 0;
+  public_repos: Number = 0;
   followers: Number = 0;
   following: Number = 0;
   created_at: String = "";

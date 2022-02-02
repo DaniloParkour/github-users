@@ -1,7 +1,7 @@
 # GitHub Users
 Search for users, get informations or list the repositories, followers or following. Developed using Vue/Nuxt and Vuetify.
 
-![image](https://user-images.githubusercontent.com/11950282/152153514-702539ca-ba32-4e1d-8fea-5ece2bb661ed.png)
+![image](https://user-images.githubusercontent.com/11950282/152153809-d2eea164-652a-4282-83ab-0662f25e95a6.png)
 
 ## Build Setup
 

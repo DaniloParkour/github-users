@@ -4,7 +4,7 @@
       <h2 class="ml-4 mt-2">GitHub Users</h2>
     </v-row>
     <v-row justify="center">
-      <v-col cols="12" md="8" lg="6">
+      <v-col cols="12" lg="8">
         <v-card
           class="mx-auto"
           color="pink"
@@ -26,48 +26,51 @@
           />
           <v-card-title>
             <v-row>
-              <v-col cols="4">
-                <v-avatar
-                  :style="
-                    'background: radial-gradient(rgba(0,0,0,.4) 25%, rgba(0,0,0,.05)); ' +
-                    (
-                      user.avatar_url
-                      ? 'border: 2px solid white;'
-                      : 'border: 2px solid gray;')
-                  "
-                  height="4em"
-                  width="4em"
-                >
-                  <img
-                    :src="user.avatar_url"
-                    :alt="user.name"
+              <v-col cols="12" md="2">
+                <!-- div :class = "'d-flex flex-column ' + $vuetify.breakpoint.md ? 'align-center' : 'align-start'" -->
+                <div div class = "d-flex flex-column align-start">
+                  <div class="d-flex flex-column align-center">
+                    <v-avatar
+                    :style="
+                      'background: radial-gradient(rgba(0,0,0,.4) 25%, rgba(0,0,0,.05)); ' +
+                      (
+                        user.avatar_url
+                        ? 'border: 2px solid white;'
+                        : 'border: 2px solid gray;')
+                    "
+                    height="4em"
+                    width="4em"
                   >
-                </v-avatar>
-                <span class="text-h6 font-bold">{{user.login}}</span>
+                    <img
+                      :src="user.avatar_url"
+                      :alt="user.name"
+                    >
+                  </v-avatar>
+                  <div class="text-caption">{{user.login}}</div>
+                  </div>
+                </div>
               </v-col>
-              <v-col cols="4">
+              <v-col cols="12" md="7">
                 <div class="flex-column" align="center" style="margin: 0 auto">
                   <div class="font-bold"> {{user.name}} </div>
                   <div class="caption" > {{user.company}} </div>
                 </div>
               </v-col>
-              <v-col cols="4">
-                <v-row no-gutters dense>
-                  <v-col cols="12">
+              <v-col cols="12" md="3">
+                <div class = "d-flex flex-column">
+                  <div class="align-self-center">
                     <v-icon dense class="caption">
                       mdi-clock
                     </v-icon>
                     <span class="caption">{{'created at ' + ((user.created_at || '').substring(0,10))}}</span>
-                  </v-col>
-                </v-row>
-                <v-row no-gutters dense>
-                  <v-col cols="12">
+                  </div>
+                  <div<div class="align-self-center">
                     <v-icon dense class="caption">
                       mdi-clock
                     </v-icon>
                     <span class="caption">{{'updated at ' + (user.updated_at || '').substring(0,10)}}</span>
-                  </v-col>
-                </v-row>
+                  </div>
+                </div>
               </v-col>
             </v-row>
           </v-card-title>
@@ -85,7 +88,7 @@
                 dense
                 no-gutters
               >
-                <v-col cols="9">
+                <v-col cols="12" md="9">
                   <div>
                     <v-icon class="mr-1">
                       mdi-mail
@@ -105,7 +108,7 @@
                     <span class="subheading">{{user.blog}}</span>
                   </div>
                 </v-col>
-                <v-col cols="3">
+                <v-col cols="12" md="3">
                   <div>
                     <v-icon class="mr-1">
                       mdi-book
@@ -132,7 +135,7 @@
       </v-col>
     </v-row>
     <v-row justify="center" align="top">
-      <v-col cols="12" md="8" lg="6">
+      <v-col cols="12" lg="8">
         <v-expansion-panels>
           <v-expansion-panel @click="searchRepositories">
             <v-expansion-panel-header>Repositories {{user.public_repos ? '('+user.public_repos+')' : ''}}</v-expansion-panel-header>
